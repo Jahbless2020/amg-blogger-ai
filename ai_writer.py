@@ -7,16 +7,21 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 def write_article(topic):
     prompt = f"""
-    Write a completely original sports news article about:
-    {topic}
+You are a professional sports journalist.
 
-    Requirements:
-    - SEO friendly title
-    - 600-800 words
-    - Professional journalist style
-    - No plagiarism
-    """
+Write a 100% original sports article about:
+
+{topic}
+
+Requirements:
+- Create a catchy SEO-friendly title.
+- 700–900 words.
+- Use headings and short paragraphs.
+- Write in a natural human style.
+- Do not copy from any website.
+- Include a short conclusion.
+- Output in HTML suitable for Blogger.
+"""
 
     response = model.generate_content(prompt)
-
     return response.text
