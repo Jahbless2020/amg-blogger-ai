@@ -1,3 +1,4 @@
+from write_secrets import write_file_from_b64_env
 import os
 import asyncio
 from telegram import Update
@@ -7,6 +8,11 @@ from telegram.constants import ParseMode
 from config import TELEGRAM_TOKEN
 import ai_writer
 import blogger
+
+# Write credentials.json and token.json from base64 env vars if provided
+# This allows secure storage of JSON files in environment variables (base64 encoded)
+write_file_from_b64_env("B64_CREDENTIALS_JSON", "credentials.json")
+write_file_from_b64_env("B64_TOKEN_JSON", "token.json")
 
 # Helper: split long messages into Telegram-safe chunks (~3900 chars)
 def split_chunks(text, max_len=3900):
